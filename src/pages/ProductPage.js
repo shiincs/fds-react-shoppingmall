@@ -3,6 +3,9 @@ import ProductDetail from '../containers/ProductDetail';
 
 export default class ProductPage extends Component {
   render() {
-    return <ProductDetail />;
+    const { match } = this.props;
+    const productId = match.params.productId;
+
+    return <ProductDetail productId={productId} />;
   }
 }
