@@ -8,13 +8,19 @@ class ProductDetailView extends Component {
     mainImgUrl: '',
     detailImgUrls: [],
     price: 0,
+    options: [],
   };
 
   render() {
-    const { id, title, mainImgUrl, detailImgUrls, price } = this.props;
+    const { id, title, mainImgUrl, detailImgUrls, price, options } = this.props;
 
     return (
       <div>
+        <select>
+          {options.map(o => (
+            <option value={o.id}>{o.title}</option>
+          ))}
+        </select>
         <div>{id}</div>
         <div>{title}</div>
         <div>{price}</div>

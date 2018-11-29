@@ -17,12 +17,23 @@ export default class ProductDetail extends Component {
       detailImgUrls: [],
       price: 0,
       loading: true,
+      options: [
+        // {
+        //   "id": 1,
+        //   "productId": 1,
+        //   "title": 95
+        //   },
+      ],
     };
   }
 
   async componentDidMount() {
     const { productId } = this.props;
-    const { data: product } = await api.get(`/products/${productId}`);
+    const { data: product } = await api.get(`/products/${productId}`, {
+      params: {
+        _embed: 'options',
+      },
+    });
     this.setState({
       ...product,
       loading: false,
