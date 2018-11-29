@@ -8,8 +8,17 @@ class ProductDetailView extends Component {
     mainImgUrl: '',
     detailImgUrls: [],
     price: 0,
-    options: [],
+    options: [
+      // {
+      //   "id": 1,
+      //   "productId": 1,
+      //   "title": 95
+      //   },
+    ],
     quantity: 1,
+    // 장바구니 항목 추가 시 호출되는 함수
+    // optionId와 quantity를 넘겨야 함
+    onCreateCartItem: () => {},
   };
 
   constructor(props) {
@@ -33,11 +42,6 @@ class ProductDetailView extends Component {
     this.setState({
       quantity: parseInt(quantity),
     });
-  }
-
-  handleBucket() {
-    const { selectedOptionId } = this.state;
-    selectedOptionId == null && alert('옵션을 선택해주세요.');
   }
 
   render() {
@@ -67,11 +71,21 @@ class ProductDetailView extends Component {
           value={this.state.quantity}
           onChange={e => this.handleQuantityChange(e)}
         />
-        <div>{id}</div>
-        <div>{title}</div>
-        <div>{totalPrice}</div>
+        <div>상품ID: {id}</div>
+        <div>상품명: {title}</div>
+        <div>가격: {totalPrice}</div>
         <div>
-          <button onClick={() => this.handleBucket()}>장바구니</button>
+          <button
+            onClick={() => {
+              selectedOptionId === ''
+                ? alert('옵션을 선택하세요')
+                : quantity < 1
+                ? alert('1 이상의 수량을 입력하세요')
+                : this.props.onCreateCartItem(selectedOptionId, quantity);
+            }}
+          >
+            장바구니
+          </button>
         </div>
         <img src={mainImgUrl} alt={title} />
         {detailImgUrls.map(url => (

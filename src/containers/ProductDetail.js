@@ -17,13 +17,7 @@ export default class ProductDetail extends Component {
       detailImgUrls: [],
       price: 0,
       loading: true,
-      options: [
-        // {
-        //   "id": 1,
-        //   "productId": 1,
-        //   "title": 95
-        //   },
-      ],
+      options: [],
     };
   }
 
@@ -40,7 +34,17 @@ export default class ProductDetail extends Component {
     });
   }
 
+  // 서버측 장바구니에 항목을 추가하는 함수
+  handleCreateCartItem = async (optionId, quantity) => {
+    alert(`장바구니 테스트, ${optionId}, ${quantity}`);
+  };
+
   render() {
-    return <ProductDetailView {...this.state} />;
+    return (
+      <ProductDetailView
+        onCreateCartItem={this.handleCreateCartItem}
+        {...this.state}
+      />
+    );
   }
 }
