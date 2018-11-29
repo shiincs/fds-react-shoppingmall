@@ -35,6 +35,8 @@ export default class UserProvider extends Component {
     // 로컬 스토리지에서 토큰 제거
     localStorage.removeItem('token');
     // 사용자 정보 캐시 초기화
+    // setState 되면서 UserProvider가 리렌더링 된다.
+    // Provider에서 내려주는 값이 바뀌면서 Consumer가 다시 그려진다.
     this.setState({
       id: null,
       username: null,
