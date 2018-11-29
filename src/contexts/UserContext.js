@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import api from '../api';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 const { Provider, Consumer } = React.createContext();
 
