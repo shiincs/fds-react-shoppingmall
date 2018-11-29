@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import withLoading from '../hoc/withLoading';
+import { Link } from 'react-router-dom';
 
 class ProductListView extends Component {
   static defaultProps = {
@@ -20,8 +21,10 @@ class ProductListView extends Component {
         {products.map(p => (
           <div key={p.id}>
             <div>{p.id}</div>
-            <div>{p.title}</div>
-            <img src={p.imgURL} alt={p.title} />
+            <div>
+              <Link to={`/product/${p.id}`}>{p.title}</Link>
+            </div>
+            <img src={p.imgURL} alt={p.title} style={{ width: 100 }} />
           </div>
         ))}
       </div>

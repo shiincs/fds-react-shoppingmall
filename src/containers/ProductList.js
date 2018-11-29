@@ -22,8 +22,8 @@ export default class ProductList extends Component {
   render() {
     const { products, loading } = this.state;
     const productsList = products.map(p => ({
-      title: p.title,
       id: p.id,
+      title: p.title,
       imgURL: p.mainImgUrl,
     }));
     return <ProductListView products={productsList} loading={loading} />;
